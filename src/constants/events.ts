@@ -1,9 +1,11 @@
-export const WORKFLOW_NEXT: 'workflownext' = 'workflownext';
-export const workflownext: string = 'workflownext';
-export const WORKFLOW_PREV: 'workflow-prev' = 'workflow-prev';
-
+export enum SLIDER {
+  SLIDER_SHOW = 'SLIDER_SHOW',
+  SLIDER_HIDE = 'SLIDER_HIDE'
+}
 
 export enum WORKFLOW {
   WORKFLOW_NEXT = 'WORKFLOW_NEXT',
   WORKFLOW_PREV = 'WORKFLOW_PREV'
 }
+
+
