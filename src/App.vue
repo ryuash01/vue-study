@@ -20,16 +20,21 @@ const handleOpen = (component: Component, props?: {[key: string]: any}) => {
 </script>
 
 <template>
+<div>
   <LayoutSlider/>
   <hr class="hr" />
   <p @click="handleOpen(WorkflowUpdateCardStatus, {color: 'blue'})">Change Card Status</p>
   <p @click="handleOpen(WorkflowAddressVue, {color: 'red'})">Change Address</p>
   <p @click="handleOpen(GlobalWhatsNew)">What's new</p>
   <p @click="emitter.emit(SLIDER.SLIDER_HIDE)">reset</p>
+</div>
 </template>
 
 <style>
 @import "@/assets/base.css";
+div {
+  padding: 0.5rem;
+}
 
 .hr {
   margin: 1rem 0;

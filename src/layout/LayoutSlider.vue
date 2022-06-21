@@ -43,7 +43,6 @@ const emitter = inject('emitter') as Emitter<MITT_EVENT_TYPES>;
 
 emitter.on(SLIDER.SLIDER_SHOW, handleOpen);
 emitter.on(SLIDER.SLIDER_HIDE, handleClose);
-
 </script>
 <template>
 <div v-if="state.open && shallowState.component">

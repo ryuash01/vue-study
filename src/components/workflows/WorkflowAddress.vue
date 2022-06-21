@@ -29,7 +29,7 @@ const EVENTS = ref({
   @[EVENTS.WORKFLOW_NEXT]="handleNextStep"
   @[EVENTS.WORKFLOW_PREV]="handlePrevStep"
 >
-  <p>Item passed in from where it was initiated: {{props.color}}</p>
+  <p>Item passed in from where it was emitted: {{props.color}}</p>
   <WorkflowAddressOne v-if="state.step === 0"/>
   <WorkflowAddressTwo v-if="state.step === 1"/>
   <WorkflowAddressThree v-if="state.step === 2"/>
