@@ -4,10 +4,11 @@ import LayoutSlider from './layout/LayoutSlider.vue';
 import WorkflowUpdateCardStatus from './components/workflows/WorkflowUpdateCardStatus.vue';
 import WorkflowAddressVue from './components/workflows/WorkflowAddress.vue';
 import GlobalWhatsNew from './components/globals/GlobalWhatsNew.vue';
-import { SLIDER } from './constants/events';
+import { Emitter } from 'mitt';
+import { MITT_EVENT_TYPES, SLIDER } from './constants/events';
 
 // figure out how to not any this
-const emitter: any = inject('emitter'); // Inject `emitter`
+const emitter = inject('emitter') as Emitter<MITT_EVENT_TYPES>;
 
 const handleOpen = (component: Component, props?: {[key: string]: any}) => {
   emitter.emit(SLIDER.SLIDER_SHOW, {

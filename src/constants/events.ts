@@ -8,5 +8,11 @@ export enum WORKFLOW {
   WORKFLOW_PREV = 'WORKFLOW_PREV'
 }
 
+export type ALL_EVENTS = (
+  SLIDER |
+  WORKFLOW
+);
 
-export type EVENT_TYPES = SLIDER | WORKFLOW;
+export type MITT_EVENT_TYPES = {
+  [key in ALL_EVENTS]: any;
+}

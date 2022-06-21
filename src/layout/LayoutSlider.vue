@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, inject, Component, shallowRef, triggerRef } from 'vue';
 import { Emitter } from 'mitt';
-import { EVENT_TYPES, SLIDER } from '../constants/events';
+import { MITT_EVENT_TYPES, SLIDER } from '../constants/events';
 type SliderState = {
   open: boolean;
 }
@@ -39,7 +39,7 @@ const handleResetComponentState = () => {
   shallowState.value.props = {};
 }
 
-const emitter: Emitter<EVENT_TYPES> = inject<EVENT_TYPES>('emitter'); // Inject `emitter`
+const emitter = inject('emitter') as Emitter<MITT_EVENT_TYPES>;
 
 emitter.on(SLIDER.SLIDER_SHOW, handleOpen);
 emitter.on(SLIDER.SLIDER_HIDE, handleClose);
