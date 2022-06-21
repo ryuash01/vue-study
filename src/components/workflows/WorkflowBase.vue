@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-import { WORKFLOW_EVENTS } from '../../constants/events';
+import * as EVENTS from '../../constants/events';
 
 type WorkflowBaseProps = {
   title: string;
@@ -8,13 +7,14 @@ type WorkflowBaseProps = {
 }
 
 const props = defineProps<WorkflowBaseProps>();
-defineEmits([WORKFLOW_EVENTS.WORKFLOW_NEXT, WORKFLOW_EVENTS.WORKFLOW_PREV])
+defineEmits([WORKFLOW_NEXT])
 
 </script>
 <template>
-<h3>{{props.title}}</h3>
-<slot>slot content</slot>
-<p>{{props.footer}}</p>
-<p @click="$emit(WORKFLOW_EVENTS.WORKFLOW_PREV)">prev</p>
-<p @click="$emit(WORKFLOW_EVENTS.WORKFLOW_NEXT)">next</p>
+<div>
+  <h3>{{props.title}}</h3>
+  <slot>slot content</slot>
+  <button @click="$emit(WORKFLOW_PREV)">prev</button>
+  <button @click="$emit(WORKFLOW_NEXT)">next</button>
+</div>
 </template>
