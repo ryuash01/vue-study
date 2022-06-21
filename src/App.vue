@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import GlobalCounter from '@/components/globals/GlobalCounter.vue';
+import LayoutSlider from './layout/LayoutSlider.vue';
+import WorkflowOne from './components/workflows/WorkflowOne.vue';
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <GlobalCounter />
+      <LayoutSlider />
+      <WorkflowOne />
+      <!-- <div>display workflow 1</div>
+      <div>display workflow 2</div>
+      <div>cancel</div> -->
     </div>
   </header>
 </template>
