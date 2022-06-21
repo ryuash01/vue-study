@@ -4,6 +4,10 @@ import { ref } from 'vue';
 import WorkflowBase from './WorkflowBase.vue';
 import { WORKFLOW } from '../../constants/events';
 import { useWorkflow } from '../../composable/use_workflow';
+import WorkflowUpdateCardStatusOne from './WorkflowUpdateCardStatusOne.vue';
+import WorkflowUpdateCardStatusTwo from './WorkflowUpdateCardStatusTwo.vue';
+import WorkflowUpdateCardStatusThree from './WorkflowUpdateCardStatusThree.vue';
+
 const { state, handleNextStep, handlePrevStep } = useWorkflow(2);
 
 // Why do i need to ref global constants, i have no idea eitehr
@@ -12,7 +16,6 @@ const EVENTS = ref({
   WORKFLOW_PREV: WORKFLOW.WORKFLOW_PREV,
 });
 
-// const whoa = WORKFLOW_NEXT;
 </script>
 <template>
 <WorkflowBase
@@ -21,8 +24,8 @@ const EVENTS = ref({
   @[EVENTS.WORKFLOW_NEXT]="handleNextStep"
   @[EVENTS.WORKFLOW_PREV]="handlePrevStep"
 >
-  <div v-if="state.step === 0">workflow one content page one</div>
-  <div v-else-if="state.step === 1">workflow one content page two</div>
-  <div v-else-if="state.step === 2">workflow one content page three</div>
+  <WorkflowUpdateCardStatusOne v-if="state.step === 0"/>
+  <WorkflowUpdateCardStatusTwo v-if="state.step === 1"/>
+  <WorkflowUpdateCardStatusThree v-if="state.step === 2"/>
 </WorkflowBase>
 </template>

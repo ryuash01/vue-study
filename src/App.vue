@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import LayoutSlider from './layout/LayoutSlider.vue';
-import WorkflowOne from './components/workflows/WorkflowOne.vue';
+import WorkflowUpdateCardStatus from './components/workflows/WorkflowUpdateCardStatus.vue';
 </script>
 
 <template>
   <header>
     <div class="wrapper">
       <LayoutSlider />
-      <WorkflowOne />
-      <!-- <div>display workflow 1</div>
-      <div>display workflow 2</div>
-      <div>cancel</div> -->
+      <WorkflowUpdateCardStatus />
     </div>
   </header>
 </template>
