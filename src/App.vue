@@ -6,18 +6,17 @@ import { SLIDER } from './constants/events';
 
 // figure out how to not any this
 const emitter: any = inject('emitter'); // Inject `emitter`
-// defineEmits([SLIDER.SLIDER_SHOW, SLIDER.SLIDER_HIDE])
-const handleShow = () => {
-  emitter.emit(SLIDER.SLIDER_SHOW);
+
+const handleOpen = () => {
+  emitter.emit(SLIDER.SLIDER_SHOW, WorkflowUpdateCardStatus);
 }
 </script>
 
 <template>
-  <LayoutSlider>
-    <WorkflowUpdateCardStatus />
-    <p @click="handleShow">display card status</p>
-    <p @click="$emit(SLIDER.SLIDER_HIDE)">reset</p>
-  </LayoutSlider>
+  <LayoutSlider/>
+  <!-- <WorkflowUpdateCardStatus /> -->
+  <p @click="handleOpen">display card status</p>
+  <p @click="emitter.emit(SLIDER.SLIDER_HIDE)">reset</p>
 </template>
 
 <style>
