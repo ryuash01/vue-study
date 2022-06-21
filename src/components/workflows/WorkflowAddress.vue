@@ -4,11 +4,18 @@ import { ref } from 'vue';
 import WorkflowBase from './WorkflowBase.vue';
 import { WORKFLOW } from '../../constants/events';
 import { useWorkflow } from '../../composable/use_workflow';
-import WorkflowUpdateCardStatusOne from './WorkflowUpdateCardStatusOne.vue';
-import WorkflowUpdateCardStatusTwo from './WorkflowUpdateCardStatusTwo.vue';
-import WorkflowUpdateCardStatusThree from './WorkflowUpdateCardStatusThree.vue';
+import WorkflowAddressOne from './WorkflowAddressOne.vue';
+import WorkflowAddressTwo from './WorkflowAddressTwo.vue';
+import WorkflowAddressThree from './WorkflowAddressThree.vue';
+import { stringifyQuery } from 'vue-router';
 
 const { state, handleNextStep, handlePrevStep } = useWorkflow(2);
+
+type WorkflowAddressProps = {
+  color: string;
+}
+
+const props = defineProps<WorkflowAddressProps>();
 
 // Why do i need to ref global constants, i have no idea eitehr
 const EVENTS = ref({
@@ -19,13 +26,14 @@ const EVENTS = ref({
 </script>
 <template>
 <WorkflowBase
-  title="UPDATE CARD"
+  title="ADDRESS"
   footer="footer"
   @[EVENTS.WORKFLOW_NEXT]="handleNextStep"
   @[EVENTS.WORKFLOW_PREV]="handlePrevStep"
 >
-  <WorkflowUpdateCardStatusOne v-if="state.step === 0"/>
-  <WorkflowUpdateCardStatusTwo v-if="state.step === 1"/>
-  <WorkflowUpdateCardStatusThree v-if="state.step === 2"/>
+  <p>Item passed in from where it was initiated: {{props.color}}</p>
+  <WorkflowAddressOne v-if="state.step === 0"/>
+  <WorkflowAddressTwo v-if="state.step === 1"/>
+  <WorkflowAddressThree v-if="state.step === 2"/>
 </WorkflowBase>
 </template>
