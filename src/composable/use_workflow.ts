@@ -12,14 +12,12 @@ export const useWorkflow = (total: number) => {
   });
 
   const handleNextStep = () => {
-    console.log('ive been called')
     if (state.value.step < state.value.total) {
       state.value.step++;
     }
   }
 
   const handlePrevStep = () => {
-    console.log('prev step called')
     if (state.value.step <= state.value.total && state.value.step !== 0) {
       state.value.step--;
     }

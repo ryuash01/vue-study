@@ -9,3 +9,4 @@ export enum WORKFLOW {
 }
 
 
+export type EVENT_TYPES = SLIDER | WORKFLOW;

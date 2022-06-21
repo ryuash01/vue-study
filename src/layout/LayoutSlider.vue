@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, inject, Component, shallowRef } from 'vue';
-import { SLIDER } from '../constants/events';
+import { ref, inject, Component, shallowRef, triggerRef } from 'vue';
+import { Emitter } from 'mitt';
+import { EVENT_TYPES, SLIDER } from '../constants/events';
 type SliderState = {
   open: boolean;
 }
@@ -21,17 +22,14 @@ const shallowState = shallowRef<ComponentState>({
   props: {}
 });
 
-// const handleOpen = (component: Component, props = {}) => {
-  const handleOpen = ({ component, props }: ComponentState) => {
-  console.log('ive been called to open')
-  console.log(props,'props');
+const handleOpen = ({ component, props }: ComponentState) => {
   state.value.open = true;
   shallowState.value.component = component;
   shallowState.value.props = props;
+  triggerRef(shallowState);
 }
 
 const handleClose = () => {
-  console.log('ive been called to closev')
   state.value.open = false;
   handleResetComponentState();
 }
@@ -41,7 +39,7 @@ const handleResetComponentState = () => {
   shallowState.value.props = {};
 }
 
-const emitter: any = inject('emitter'); // Inject `emitter`
+const emitter: Emitter<EVENT_TYPES> = inject<EVENT_TYPES>('emitter'); // Inject `emitter`
 
 emitter.on(SLIDER.SLIDER_SHOW, handleOpen);
 emitter.on(SLIDER.SLIDER_HIDE, handleClose);
@@ -49,6 +47,6 @@ emitter.on(SLIDER.SLIDER_HIDE, handleClose);
 </script>
 <template>
 <div v-if="state.open && shallowState.component">
-  <shallowState.component :props="shallowState.props" />
+  <shallowState.component v-bind="shallowState.props" />
 </div>
 </template>

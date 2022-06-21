@@ -7,7 +7,6 @@ import { useWorkflow } from '../../composable/use_workflow';
 import WorkflowAddressOne from './WorkflowAddressOne.vue';
 import WorkflowAddressTwo from './WorkflowAddressTwo.vue';
 import WorkflowAddressThree from './WorkflowAddressThree.vue';
-import { stringifyQuery } from 'vue-router';
 
 const { state, handleNextStep, handlePrevStep } = useWorkflow(2);
 
@@ -16,7 +15,6 @@ type WorkflowAddressProps = {
 }
 
 const props = defineProps<WorkflowAddressProps>();
-
 // Why do i need to ref global constants, i have no idea eitehr
 const EVENTS = ref({
   WORKFLOW_NEXT: WORKFLOW.WORKFLOW_NEXT,
